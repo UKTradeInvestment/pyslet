@@ -4430,8 +4430,8 @@ class SQLEntityContainer(object):
                     collection.create_table()
                 else:
                     query, params = collection.create_table_query()
-                    out.write(query)
-                    out.write(";\n\n")
+                    out.write(query.encode('utf8'))
+                    out.write(b';\n\n')
                     if params.params:
                         logging.warning("Ignoring params to CREATE TABLE: %s",
                                         to_text(params.params))
@@ -4442,8 +4442,8 @@ class SQLEntityContainer(object):
                 nav_class.create_table(self, aset_name)
             else:
                 query, params = nav_class.create_table_query(self, aset_name)
-                out.write(query)
-                out.write(";\n\n")
+                out.write(query.encode('utf8'))
+                out.write(b';\n\n')
                 if params.params:
                     logging.warning("Ignoring params to CREATE TABLE: %s",
                                     to_text(params.params))
